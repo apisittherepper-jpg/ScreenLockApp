@@ -1,5 +1,7 @@
 package com.example.screenlock.ui
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.screenlock.R
 import com.example.screenlock.model.AppInfo
 import com.example.screenlock.model.OrientationOption
-import com.google.android.material.button.MaterialButtonToggleGroup
+import com.google.android.material.button.MaterialButton
 
 class AppAdapter(
-    private val onOrientationChanged: (packageName: String, option: OrientationOption) -> Unit
+    private val onOrientationChanged: (appInfo: AppInfo, option: OrientationOption) -> Unit
 ) : RecyclerView.Adapter<AppAdapter.AppViewHolder>() {
 
     private val fullList = mutableListOf<AppInfo>()
@@ -57,32 +59,82 @@ class AppAdapter(
         private val ivAppIcon: ImageView = itemView.findViewById(R.id.ivAppIcon)
         private val tvAppName: TextView = itemView.findViewById(R.id.tvAppName)
         private val tvPackageName: TextView = itemView.findViewById(R.id.tvPackageName)
-        private val toggleGroup: MaterialButtonToggleGroup =
-            itemView.findViewById(R.id.toggleGroupOrientation)
+
+        private val btnDefault: MaterialButton = itemView.findViewById(R.id.btnOptDefault)
+        private val btnPortrait: MaterialButton = itemView.findViewById(R.id.btnOptPortrait)
+        private val btnLandscape: MaterialButton = itemView.findViewById(R.id.btnOptLandscape)
 
         fun bind(item: AppInfo) {
             ivAppIcon.setImageDrawable(item.icon)
             tvAppName.text = item.appName
             tvPackageName.text = item.packageName
 
-            toggleGroup.clearOnButtonCheckedListeners()
+            updateButtonStates(item.orientation)
 
-            when (item.orientation) {
-                OrientationOption.PORTRAIT -> toggleGroup.check(R.id.btnOptPortrait)
-                OrientationOption.LANDSCAPE -> toggleGroup.check(R.id.btnOptLandscape)
-                else -> toggleGroup.check(R.id.btnOptDefault)
+            btnDefault.setOnClickListener {
+                if (item.orientation != OrientationOption.DEFAULT) {
+                    item.orientation = OrientationOption.DEFAULT
+                    updateButtonStates(item.orientation)
+                    onOrientationChanged(item, OrientationOption.DEFAULT)
+                }
             }
 
-            toggleGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
-                if (isChecked) {
-                    val newOption = when (checkedId) {
-                        R.id.btnOptPortrait -> OrientationOption.PORTRAIT
-                        R.id.btnOptLandscape -> OrientationOption.LANDSCAPE
-                        else -> OrientationOption.DEFAULT
-                    }
-                    item.orientation = newOption
-                    onOrientationChanged(item.packageName, newOption)
+            btnPortrait.setOnClickListener {
+                if (item.orientation != OrientationOption.PORTRAIT) {
+                    item.orientation = OrientationOption.PORTRAIT
+                    updateButtonStates(item.orientation)
+                    onOrientationChanged(item, OrientationOption.PORTRAIT)
                 }
+            }
+
+            btnLandscape.setOnClickListener {
+                if (item.orientation != OrientationOption.LANDSCAPE) {
+                    item.orientation = OrientationOption.LANDSCAPE
+                    updateButtonStates(item.orientation)
+                    onOrientationChanged(item, OrientationOption.LANDSCAPE)
+                }
+            }
+        }
+
+        private fun updateButtonStates(current: OrientationOption) {
+            val colorSelected = Color.parseColor("#6200EE")
+            val colorUnselectedText = Color.parseColor("#444444")
+            val colorUnselectedStroke = Color.parseColor("#CCCCCC")
+
+            // Default button
+            if (current == OrientationOption.DEFAULT) {
+                btnDefault.setBackgroundColor(colorSelected)
+                btnDefault.setTextColor(Color.WHITE)
+                btnDefault.strokeWidth = 0
+            } else {
+                btnDefault.setBackgroundColor(Color.TRANSPARENT)
+                btnDefault.setTextColor(colorUnselectedText)
+                btnDefault.strokeColor = ColorStateList.valueOf(colorUnselectedStroke)
+                btnDefault.strokeWidth = 2
+            }
+
+            // Portrait button
+            if (current == OrientationOption.PORTRAIT) {
+                btnPortrait.setBackgroundColor(colorSelected)
+                btnPortrait.setTextColor(Color.WHITE)
+                btnPortrait.strokeWidth = 0
+            } else {
+                btnPortrait.setBackgroundColor(Color.TRANSPARENT)
+                btnPortrait.setTextColor(colorUnselectedText)
+                btnPortrait.strokeColor = ColorStateList.valueOf(colorUnselectedStroke)
+                btnPortrait.strokeWidth = 2
+            }
+
+            // Landscape button
+            if (current == OrientationOption.LANDSCAPE) {
+                btnLandscape.setBackgroundColor(colorSelected)
+                btnLandscape.setTextColor(Color.WHITE)
+                btnLandscape.strokeWidth = 0
+            } else {
+                btnLandscape.setBackgroundColor(Color.TRANSPARENT)
+                btnLandscape.setTextColor(colorUnselectedText)
+                btnLandscape.strokeColor = ColorStateList.valueOf(colorUnselectedStroke)
+                btnLandscape.strokeWidth = 2
             }
         }
     }

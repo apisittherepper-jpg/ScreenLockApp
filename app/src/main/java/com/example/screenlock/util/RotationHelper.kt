@@ -1,41 +1,50 @@
 package com.example.screenlock.util
 
 import android.content.Context
+import android.os.Build
 import android.provider.Settings
 import android.view.Surface
 import com.example.screenlock.model.OrientationOption
 
 object RotationHelper {
 
+    fun canDrawOverlays(context: Context): Boolean {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Settings.canDrawOverlays(context)
+        } else {
+            true
+        }
+    }
+
     fun canWriteSettings(context: Context): Boolean {
-        return Settings.System.canWrite(context)
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Settings.System.canWrite(context)
+        } else {
+            true
+        }
     }
 
     /**
-     * Lock screen orientation permanently or restore auto-rotation.
+     * Change system-level rotation settings as a secondary reinforcement.
      */
-    fun applyOrientation(context: Context, option: OrientationOption) {
+    fun applySystemRotation(context: Context, option: OrientationOption) {
         if (!canWriteSettings(context)) return
 
         val cr = context.contentResolver
         try {
             when (option) {
                 OrientationOption.PORTRAIT -> {
-                    // Turn off auto-rotate and lock to portrait (ROTATION_0)
                     Settings.System.putInt(cr, Settings.System.ACCELEROMETER_ROTATION, 0)
                     Settings.System.putInt(cr, Settings.System.USER_ROTATION, Surface.ROTATION_0)
                 }
                 OrientationOption.LANDSCAPE -> {
-                    // Turn off auto-rotate and lock to landscape (ROTATION_90)
                     Settings.System.putInt(cr, Settings.System.ACCELEROMETER_ROTATION, 0)
                     Settings.System.putInt(cr, Settings.System.USER_ROTATION, Surface.ROTATION_90)
                 }
                 OrientationOption.AUTO -> {
-                    // Turn on auto-rotate
                     Settings.System.putInt(cr, Settings.System.ACCELEROMETER_ROTATION, 1)
                 }
                 OrientationOption.DEFAULT -> {
-                    // Revert to auto-rotate
                     Settings.System.putInt(cr, Settings.System.ACCELEROMETER_ROTATION, 1)
                 }
             }

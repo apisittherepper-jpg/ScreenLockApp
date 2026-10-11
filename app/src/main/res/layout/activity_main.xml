@@ -15,9 +15,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="24dp">
+            android:paddingBottom="36dp">
 
-            <!-- Header -->
+            <!-- App Header -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,44 +50,73 @@
                 android:paddingHorizontal="16dp"
                 android:paddingTop="16dp">
 
-                <!-- Master Switch Card -->
+                <!-- Permissions Section -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/perm_section_title"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <!-- Permission 1: Overlay Window (MOST CRITICAL) -->
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardPermOverlay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="2dp">
+                    android:layout_marginTop="8dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="1dp"
+                    app:strokeColor="#FFC107"
+                    app:strokeWidth="1dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:padding="16dp">
+                        android:padding="12dp">
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/switch_master"
-                            android:textColor="@color/black"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
+                            android:orientation="vertical">
 
-                        <com.google.android.material.switchmaterial.SwitchMaterial
-                            android:id="@+id/switchMaster"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/perm_title_overlay"
+                                android:textColor="@color/black"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="@string/perm_desc_overlay"
+                                android:textColor="#666666"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnGrantOverlay"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
+                            android:layout_height="38dp"
+                            android:layout_marginStart="8dp"
+                            android:text="@string/btn_grant"
+                            android:textSize="11sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Permission 1: Modify System Settings -->
+                <!-- Permission 2: Modify Settings -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardPermSettings"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    app:cardCornerRadius="12dp"
+                    android:layout_marginTop="8dp"
+                    app:cardCornerRadius="10dp"
                     app:cardElevation="1dp"
                     app:strokeColor="#FFC107"
                     app:strokeWidth="1dp">
@@ -95,43 +124,50 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="14dp">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="12dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="@string/perm_title_settings"
-                            android:textColor="@color/black"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:text="@string/perm_desc_settings"
-                            android:textColor="#666666"
-                            android:textSize="12sp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/perm_title_settings"
+                                android:textColor="@color/black"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="@string/perm_desc_settings"
+                                android:textColor="#666666"
+                                android:textSize="11sp" />
+                        </LinearLayout>
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnGrantSettings"
                             android:layout_width="wrap_content"
-                            android:layout_height="40dp"
-                            android:layout_marginTop="8dp"
+                            android:layout_height="38dp"
+                            android:layout_marginStart="8dp"
                             android:text="@string/btn_grant"
-                            android:textSize="12sp" />
-
+                            android:textSize="11sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Permission 2: Accessibility Service -->
+                <!-- Permission 3: Accessibility Service -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardPermAccessibility"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    app:cardCornerRadius="12dp"
+                    android:layout_marginTop="8dp"
+                    app:cardCornerRadius="10dp"
                     app:cardElevation="1dp"
                     app:strokeColor="#FFC107"
                     app:strokeWidth="1dp">
@@ -139,46 +175,65 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="14dp">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="12dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="@string/perm_title_accessibility"
-                            android:textColor="@color/black"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:text="@string/perm_desc_accessibility"
-                            android:textColor="#666666"
-                            android:textSize="12sp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/perm_title_accessibility"
+                                android:textColor="@color/black"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="@string/perm_desc_accessibility"
+                                android:textColor="#666666"
+                                android:textSize="11sp" />
+                        </LinearLayout>
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnGrantAccessibility"
                             android:layout_width="wrap_content"
-                            android:layout_height="40dp"
-                            android:layout_marginTop="8dp"
+                            android:layout_height="38dp"
+                            android:layout_marginStart="8dp"
                             android:text="@string/btn_grant"
-                            android:textSize="12sp" />
-
+                            android:textSize="11sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Quick Controls -->
+                <!-- Master Mode Selection -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
-                    android:text="@string/quick_controls_title"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/permanent_lock_title"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
+                <!-- Mode 1: Per App Lock -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnModePerApp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/mode_per_app"
+                    android:textSize="13sp"
+                    app:cornerRadius="10dp" />
+
+                <!-- Mode 2 & 3: Force Portrait / Landscape System-wide -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -186,42 +241,67 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnQuickPortrait"
-                        android:layout_width="0dp"
-                        android:layout_height="46dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_weight="1"
-                        android:text="@string/btn_lock_portrait"
-                        android:textSize="12sp" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnQuickLandscape"
-                        android:layout_width="0dp"
-                        android:layout_height="46dp"
-                        android:layout_marginHorizontal="4dp"
-                        android:layout_weight="1"
-                        android:text="@string/btn_lock_landscape"
-                        android:textSize="12sp" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnQuickAuto"
+                        android:id="@+id/btnModeForcePortrait"
                         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                         android:layout_width="0dp"
-                        android:layout_height="46dp"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        android:text="@string/mode_force_portrait"
+                        android:textSize="12sp"
+                        app:cornerRadius="8dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnModeForceLandscape"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
                         android:layout_marginStart="4dp"
                         android:layout_weight="1"
-                        android:text="@string/btn_auto"
-                        android:textSize="12sp" />
-
+                        android:text="@string/mode_force_landscape"
+                        android:textSize="12sp"
+                        app:cornerRadius="8dp" />
                 </LinearLayout>
 
-                <!-- App List Section Header & Search -->
+                <!-- Mode 4 & 5: Auto / Stop -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnModeForceAuto"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        android:text="@string/mode_force_auto"
+                        android:textSize="12sp"
+                        app:cornerRadius="8dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnModeStop"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="1"
+                        android:text="@string/mode_stop"
+                        android:textColor="#D32F2F"
+                        android:textSize="12sp"
+                        app:cornerRadius="8dp"
+                        app:strokeColor="#D32F2F" />
+                </LinearLayout>
+
+                <!-- Per-App Section Header & Search -->
                 <TextView
                     android:id="@+id/tvAppListCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="เลือกตั้งค่ารายชื่อแอพ"
+                    android:layout_marginTop="24dp"
+                    android:text="เลือกตั้งค่าเฉพาะแอพ"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -240,7 +320,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/search_hint"
-                        android:textSize="14sp" />
+                        android:textSize="13sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -252,14 +332,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="32dp" />
+                android:layout_marginTop="24dp" />
 
-            <!-- Recycler View -->
+            <!-- App list RecyclerView -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvApps"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="10dp"
                 android:nestedScrollingEnabled="false" />
 
         </LinearLayout>

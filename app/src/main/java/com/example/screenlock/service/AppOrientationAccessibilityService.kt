@@ -5,9 +5,9 @@ import android.content.Context
 import android.provider.Settings
 import android.text.TextUtils
 import android.view.accessibility.AccessibilityEvent
+import com.example.screenlock.model.GlobalLockMode
 import com.example.screenlock.model.OrientationOption
 import com.example.screenlock.util.PreferencesHelper
-import com.example.screenlock.util.RotationHelper
 
 class AppOrientationAccessibilityService : AccessibilityService() {
 
@@ -24,34 +24,23 @@ class AppOrientationAccessibilityService : AccessibilityService() {
             return
         }
 
-        if (!prefsHelper.isMasterEnabled) {
+        // Only manage orientation dynamically if user selected PER_APP mode
+        if (prefsHelper.globalLockMode != GlobalLockMode.PER_APP) {
             return
         }
 
         val pkgName = event.packageName?.toString() ?: return
 
-        // Skip internal/system input methods or rapid duplicates
-        if (pkgName == lastPackageName || pkgName == packageName) {
+        // Skip our own app or rapid duplicate window events
+        if (pkgName == packageName || pkgName == lastPackageName) {
             return
         }
         lastPackageName = pkgName
 
         val targetOrientation = prefsHelper.getOrientationForApp(pkgName)
 
-        when (targetOrientation) {
-            OrientationOption.PORTRAIT -> {
-                RotationHelper.applyOrientation(this, OrientationOption.PORTRAIT)
-            }
-            OrientationOption.LANDSCAPE -> {
-                RotationHelper.applyOrientation(this, OrientationOption.LANDSCAPE)
-            }
-            OrientationOption.AUTO -> {
-                RotationHelper.applyOrientation(this, OrientationOption.AUTO)
-            }
-            OrientationOption.DEFAULT -> {
-                // If the app doesn't have a specific lock, don't force or let system handle it
-            }
-        }
+        // Forward orientation to OrientationOverlayService
+        OrientationOverlayService.setAppOrientation(this, targetOrientation)
     }
 
     override fun onInterrupt() {

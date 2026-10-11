@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="12dp"
-    android:layout_marginVertical="6dp"
-    app:cardCornerRadius="12dp"
+    android:layout_marginVertical="5dp"
+    app:cardCornerRadius="10dp"
     app:cardElevation="1dp"
-    app:strokeWidth="1dp"
-    app:strokeColor="#EAEAEA">
+    app:strokeColor="#EAEAEA"
+    app:strokeWidth="1dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,8 +25,8 @@
 
             <ImageView
                 android:id="@+id/ivAppIcon"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:contentDescription="@null"
                 tools:src="@android:drawable/sym_def_app_icon" />
 
@@ -44,7 +44,7 @@
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textSize="14sp"
                     android:textStyle="bold"
                     tools:text="YouTube" />
 
@@ -61,21 +61,21 @@
 
         </LinearLayout>
 
-        <!-- Segmented buttons for orientation selection -->
-        <com.google.android.material.button.MaterialButtonToggleGroup
-            android:id="@+id/toggleGroupOrientation"
+        <!-- 3 Buttons with direct, explicit click handlers -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:singleSelection="true">
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnOptDefault"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="38dp"
+                android:layout_marginEnd="3dp"
                 android:layout_weight="1"
-                android:paddingHorizontal="4dp"
+                android:padding="0dp"
                 android:text="@string/opt_default"
                 android:textSize="11sp" />
 
@@ -83,9 +83,10 @@
                 android:id="@+id/btnOptPortrait"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="38dp"
+                android:layout_marginHorizontal="3dp"
                 android:layout_weight="1"
-                android:paddingHorizontal="4dp"
+                android:padding="0dp"
                 android:text="@string/opt_portrait"
                 android:textSize="11sp" />
 
@@ -93,13 +94,14 @@
                 android:id="@+id/btnOptLandscape"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="3dp"
                 android:layout_weight="1"
-                android:paddingHorizontal="4dp"
+                android:padding="0dp"
                 android:text="@string/opt_landscape"
                 android:textSize="11sp" />
 
-        </com.google.android.material.button.MaterialButtonToggleGroup>
+        </LinearLayout>
 
     </LinearLayout>
 

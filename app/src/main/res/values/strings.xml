@@ -1,32 +1,50 @@
 <resources>
-    <string name="app_name">Per-App Screen Lock</string>
+    <string name="app_name">Screen Lock Pro</string>
     <string name="accessibility_service_description">บริการตรวจจับการเปิดใช้งานแอพ เพื่อปรับทิศทางหน้าจอ (แนวตั้ง/แนวนอน) อัตโนมัติตามแอพที่ผู้ใช้กำหนด</string>
 
-    <string name="title_app">ระบบล็อคหน้าจอเฉพาะแอพ (Per-App Rotation)</string>
-    <string name="desc_app">กำหนดให้แต่ละแอพล็อคเป็นแนวตั้งหรือแนวนอนอย่างถาวรเมื่อเปิดใช้งาน</string>
+    <string name="title_app">ล็อคหน้าจอถาวร &amp; แยกตามแอพ</string>
+    <string name="desc_app">ล็อคทิศทางหน้าจอได้ทั้งแบบถาวรทุกแอพ หรือเลือกเฉพาะแอพที่ต้องการ</string>
 
     <!-- Permissions -->
-    <string name="perm_title_settings">1. สิทธิ์แก้ไขการตั้งค่าระบบ (Modify System Settings)</string>
-    <string name="perm_desc_settings">จำเป็นสำหรับสั่งหมุนและล็อคหน้าจอเครื่อง</string>
-    <string name="perm_title_accessibility">2. บริการการเข้าถึง (Accessibility Service)</string>
-    <string name="perm_desc_accessibility">จำเป็นสำหรับตรวจจับว่าขณะนี้ผู้ใช้กำลังเปิดใช้งานแอพใดอยู่</string>
-    <string name="btn_grant">อนุญาตสิทธิ์</string>
-    <string name="status_granted">✅ อนุญาตแล้ว</string>
+    <string name="perm_section_title">สิทธิ์ที่จำเป็นในการทำงาน (ต้องเปิดให้ครบ):</string>
 
-    <!-- Master Switch -->
-    <string name="switch_master">เปิดใช้งานการควบคุมทิศทางตามแอพ</string>
+    <string name="perm_title_overlay">1. แสดงทับแอพอื่น (Display Over Other Apps)</string>
+    <string name="perm_desc_overlay">จำเป็นสูงสุด: ใช้สำหรับบังคับทิศทางหน้าจอ (Override) ข้ามแอพอื่น</string>
 
-    <!-- Quick Controls -->
-    <string name="quick_controls_title">สั่งล็อคทันที (Quick Controls)</string>
-    <string name="btn_lock_portrait">🔒 แนวตั้ง</string>
-    <string name="btn_lock_landscape">🔄 แนวนอน</string>
-    <string name="btn_auto">🌐 อัตโนมัติ (Sensor)</string>
+    <string name="perm_title_settings">2. แก้ไขการตั้งค่าระบบ (Modify System Settings)</string>
+    <string name="perm_desc_settings">จำเป็น: ใช้สำหรับสั่งหมุนและล็อคการหมุนหน้าจอของเครื่อง</string>
+
+    <string name="perm_title_accessibility">3. บริการการเข้าถึง (Accessibility Service)</string>
+    <string name="perm_desc_accessibility">จำเป็นสำหรับโหมดแยกตามแอพ: เพื่อตรวจจับว่าเปิดแอพไหนอยู่</string>
+
+    <string name="btn_grant">กดเปิดสิทธิ์</string>
+    <string name="status_granted">✅ เปิดแล้ว</string>
+
+    <!-- Permanent Lock Controls -->
+    <string name="permanent_lock_title">โหมดล็อคหน้าจอหลัก (Master Lock Mode)</string>
+    <string name="mode_per_app">🎯 ล็อคตามแอพที่เลือกด้านล่าง</string>
+    <string name="mode_force_portrait">🔒 ล็อคแนวตั้งถาวร (ทุกแอพ)</string>
+    <string name="mode_force_landscape">🔄 ล็อคแนวนอนถาวร (ทุกแอพ)</string>
+    <string name="mode_force_auto">🌐 หมุนตามเซนเซอร์อัตโนมัติ</string>
+    <string name="mode_stop">⏹️ ปิดการทำงาน (คืนค่าเดิม)</string>
+
+    <!-- Notification -->
+    <string name="notif_channel_name">บริการควบคุมทิศทางหน้าจอ</string>
+    <string name="notif_title">Screen Lock ทำงานอยู่</string>
+    <string name="notif_content">โหมดปัจจุบัน: %1$s</string>
+    <string name="notif_action_portrait">แนวตั้ง</string>
+    <string name="notif_action_landscape">แนวนอน</string>
+    <string name="notif_action_auto">เซนเซอร์</string>
+    <string name="notif_action_stop">ปิด</string>
 
     <!-- App list -->
-    <string name="app_list_title">เลือกตั้งค่ารายชื่อแอพ (%1$d แอพ)</string>
-    <string name="search_hint">ค้นหาชื่อแอพหรือแพ็กเกจ...</string>
+    <string name="app_list_title">เลือกตั้งค่าเฉพาะแอพ (%1$d แอพ)</string>
+    <string name="search_hint">ค้นหาชื่อแอพ...</string>
     <string name="opt_default">ตามเครื่อง</string>
-    <string name="opt_portrait">📱 แนวตั้ง</string>
-    <string name="opt_landscape">🖥️ แนวนอน</string>
-    <string name="loading_apps">กำลังโหลดรายชื่อแอพในเครื่อง...</string>
+    <string name="opt_portrait">📱 ตั้ง</string>
+    <string name="opt_landscape">🖥️ นอน</string>
+    <string name="loading_apps">กำลังโหลดรายชื่อแอพ...</string>
+
+    <string name="toast_saved">ตั้งค่า %1$s: %2$s เรียบร้อย</string>
+    <string name="toast_perm_required">กรุณาเปิดสิทธิ์ "แสดงทับแอพอื่น" เพื่อให้ระบบล็อคหน้าจอทำงานได้</string>
 </resources>
