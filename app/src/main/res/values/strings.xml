@@ -1,17 +1,32 @@
 <resources>
-    <string name="app_name">Screen Lock App</string>
-    <string name="title_screen_orientation">จัดการทิศทางหน้าจอ (Screen Orientation)</string>
-    <string name="current_status">สถานะปัจจุบัน: %1$s</string>
-    <string name="status_portrait">ล็อคแนวตั้ง (Portrait)</string>
-    <string name="status_landscape">ล็อคแนวนอน (Landscape)</string>
-    <string name="status_reverse_portrait">ล็อคแนวตั้งกลับหัว (Reverse Portrait)</string>
-    <string name="status_reverse_landscape">ล็อคแนวนอนกลับด้าน (Reverse Landscape)</string>
-    <string name="status_sensor">หมุนตามเซนเซอร์อัตโนมัติ (Sensor)</string>
-    <string name="status_unspecified">ตามระบบปฏิบัติการ (Unspecified)</string>
-    <string name="btn_lock_portrait">🔒 ล็อคแนวตั้ง</string>
-    <string name="btn_lock_landscape">🔄 ล็อคแนวนอน</string>
-    <string name="btn_sensor_auto">🌐 หมุนตามเครื่อง (Auto/Sensor)</string>
-    <string name="btn_reverse_portrait">🔃 แนวตั้งกลับหัว</string>
-    <string name="btn_reverse_landscape">🔃 แนวนอนกลับด้าน</string>
-    <string name="hint_text">หมายเหตุ: การล็อคหน้าจอนี้จะมีผลเฉพาะตอนเปิดใช้งานแอพนี้เท่านั้น จะไม่กระทบการทำงานของระบบหรือแอพอื่น</string>
+    <string name="app_name">Per-App Screen Lock</string>
+    <string name="accessibility_service_description">บริการตรวจจับการเปิดใช้งานแอพ เพื่อปรับทิศทางหน้าจอ (แนวตั้ง/แนวนอน) อัตโนมัติตามแอพที่ผู้ใช้กำหนด</string>
+
+    <string name="title_app">ระบบล็อคหน้าจอเฉพาะแอพ (Per-App Rotation)</string>
+    <string name="desc_app">กำหนดให้แต่ละแอพล็อคเป็นแนวตั้งหรือแนวนอนอย่างถาวรเมื่อเปิดใช้งาน</string>
+
+    <!-- Permissions -->
+    <string name="perm_title_settings">1. สิทธิ์แก้ไขการตั้งค่าระบบ (Modify System Settings)</string>
+    <string name="perm_desc_settings">จำเป็นสำหรับสั่งหมุนและล็อคหน้าจอเครื่อง</string>
+    <string name="perm_title_accessibility">2. บริการการเข้าถึง (Accessibility Service)</string>
+    <string name="perm_desc_accessibility">จำเป็นสำหรับตรวจจับว่าขณะนี้ผู้ใช้กำลังเปิดใช้งานแอพใดอยู่</string>
+    <string name="btn_grant">อนุญาตสิทธิ์</string>
+    <string name="status_granted">✅ อนุญาตแล้ว</string>
+
+    <!-- Master Switch -->
+    <string name="switch_master">เปิดใช้งานการควบคุมทิศทางตามแอพ</string>
+
+    <!-- Quick Controls -->
+    <string name="quick_controls_title">สั่งล็อคทันที (Quick Controls)</string>
+    <string name="btn_lock_portrait">🔒 แนวตั้ง</string>
+    <string name="btn_lock_landscape">🔄 แนวนอน</string>
+    <string name="btn_auto">🌐 อัตโนมัติ (Sensor)</string>
+
+    <!-- App list -->
+    <string name="app_list_title">เลือกตั้งค่ารายชื่อแอพ (%1$d แอพ)</string>
+    <string name="search_hint">ค้นหาชื่อแอพหรือแพ็กเกจ...</string>
+    <string name="opt_default">ตามเครื่อง</string>
+    <string name="opt_portrait">📱 แนวตั้ง</string>
+    <string name="opt_landscape">🖥️ แนวนอน</string>
+    <string name="loading_apps">กำลังโหลดรายชื่อแอพในเครื่อง...</string>
 </resources>
