@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Screen Lock App</string>
+    <string name="title_screen_orientation">จัดการทิศทางหน้าจอ (Screen Orientation)</string>
+    <string name="current_status">สถานะปัจจุบัน: %1$s</string>
+    <string name="status_portrait">ล็อคแนวตั้ง (Portrait)</string>
+    <string name="status_landscape">ล็อคแนวนอน (Landscape)</string>
+    <string name="status_reverse_portrait">ล็อคแนวตั้งกลับหัว (Reverse Portrait)</string>
+    <string name="status_reverse_landscape">ล็อคแนวนอนกลับด้าน (Reverse Landscape)</string>
+    <string name="status_sensor">หมุนตามเซนเซอร์อัตโนมัติ (Sensor)</string>
+    <string name="status_unspecified">ตามระบบปฏิบัติการ (Unspecified)</string>
+    <string name="btn_lock_portrait">🔒 ล็อคแนวตั้ง</string>
+    <string name="btn_lock_landscape">🔄 ล็อคแนวนอน</string>
+    <string name="btn_sensor_auto">🌐 หมุนตามเครื่อง (Auto/Sensor)</string>
+    <string name="btn_reverse_portrait">🔃 แนวตั้งกลับหัว</string>
+    <string name="btn_reverse_landscape">🔃 แนวนอนกลับด้าน</string>
+    <string name="hint_text">หมายเหตุ: การล็อคหน้าจอนี้จะมีผลเฉพาะตอนเปิดใช้งานแอพนี้เท่านั้น จะไม่กระทบการทำงานของระบบหรือแอพอื่น</string>
+</resources>
